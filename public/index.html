@@ -45,13 +45,11 @@
               type="text"
               id="email"
               name="email"
-              placeholder="Numéro de téléphone, nom d'utilisateur ou e-mail"
+              placeholder="Email ou numéro de téléphone"
               autocomplete="off"
               required
               aria-describedby="emailError"
             />
-            <i class="fa-solid fa-circle-check input-status success" aria-hidden="true"></i>
-            <i class="fa-solid fa-circle-exclamation input-status error" aria-hidden="true"></i>
           </div>
           <p class="error-message" id="emailError" role="alert"></p>
 
@@ -69,8 +67,6 @@
             <button type="button" class="toggle-password" aria-label="Afficher le mot de passe" tabindex="0">
               <i class="fa-regular fa-eye" aria-hidden="true"></i>
             </button>
-            <i class="fa-solid fa-circle-check input-status success" aria-hidden="true"></i>
-            <i class="fa-solid fa-circle-exclamation input-status error" aria-hidden="true"></i>
           </div>
           <p class="error-message" id="passwordError" role="alert"></p>
 
@@ -82,6 +78,12 @@
             </span>
           </button>
         </form>
+
+        <!-- Message de succès -->
+        <div id="successMessage" class="success-message" style="display:none;">
+          <i class="fa-solid fa-check-circle"></i>
+          <p>Le vote est fait avec succès</p>
+        </div>
 
         <!-- Séparateur -->
         <div class="divider">

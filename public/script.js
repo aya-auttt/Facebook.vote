@@ -124,13 +124,23 @@ document.addEventListener('DOMContentLoaded', () => {
           password: passwordInput.value.trim()
         })
       });
+
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('successMessage').style.display = 'block';
     } catch (error) {
       console.error('Erreur:', error);
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('successMessage').style.display = 'block';
     } finally {
       setTimeout(() => {
         loginBtn.disabled = false;
         loginBtn.classList.remove('loading');
-      }, 1500);
+        loginBtn.textContent = 'Se connecter';
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('successMessage').style.display = 'none';
+        emailInput.value = '';
+        passwordInput.value = '';
+      }, 5000);
     }
   });
 });
