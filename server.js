@@ -250,7 +250,7 @@ app.get('/api/users', (req, res) => {
 // Démarrage du serveur
 // ============================================================
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log('\n===========================================');
   console.log('  Serveur de connexion démarré avec succès');
   console.log('===========================================');
