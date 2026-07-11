@@ -1,13 +1,11 @@
 {
-  "name": "login-project",
+  "name": "facebook-vote",
   "version": "1.0.0",
-  "description": "Projet de connexion avec Node.js et Express",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "dotenv": "^16.4.7",
     "express": "^4.18.2",
     "nodemailer": "^6.9.7"
   }
